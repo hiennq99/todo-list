@@ -51,7 +51,10 @@ export default function Home() {
 
   const changeTaskStatus = async (id: string, status: string) => {
     try {
-      await updateTask.mutateAsync({ id, status });
+      await updateTask.mutateAsync({
+        id,
+        status: status === 'completed' ? 'incomplete' : 'completed',
+      });
       toast('Task status changed successfully', 'success');
     } catch (error) {
       toast('Failed to change task status', 'error');

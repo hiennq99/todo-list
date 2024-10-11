@@ -12,11 +12,12 @@ export async function GET(request: NextRequest) {
     where.status = status as string;
   }
 
-  const todos = await db.todo.findMany({
+  const tasks = await db.todo.findMany({
     where,
+    orderBy: [{ status: 'desc' }, { createdAt: 'desc' }],
   });
 
-  return NextResponse.json(todos);
+  return NextResponse.json(tasks);
 }
 
 export async function POST(request: NextRequest) {
