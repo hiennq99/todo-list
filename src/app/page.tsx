@@ -1,6 +1,7 @@
 'use client';
 
 import CreateTaskDialog from '@/components/CreateTaskDialog';
+import { toast } from '@/components/toast';
 import { useDeleteTask } from '@/hooks/useDeleteTask';
 import { useTasksQuery } from '@/hooks/useTasksQuery';
 import { useUpdateTask } from '@/hooks/useUpdateTask';
@@ -35,6 +36,7 @@ export default function Home() {
 
   const tasksQuery = useTasksQuery(status);
   const updateTask = useUpdateTask();
+  const deleteTask = useDeleteTask();
   const handleChange = (event: SelectChangeEvent) => {
     setStatus(event.target.value as string);
   };
@@ -47,7 +49,25 @@ export default function Home() {
     setOpen(true);
   };
 
-  const deleteTask = useDeleteTask();
+  const changeTaskStatus = async (id: string, status: string) => {
+    try {
+      await updateTask.mutateAsync({ id, status });
+      toast('Task status changed successfully', 'success');
+    } catch (error) {
+      toast('Failed to change task status', 'error');
+      console.error(error);
+    }
+  };
+
+  const onDeleteTask = async (id: string) => {
+    try {
+      await deleteTask.mutateAsync(id);
+      toast('Task deleted successfully', 'success');
+    } catch (error) {
+      toast('Failed to delete task', 'error');
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     tasksQuery.refetch();
@@ -105,18 +125,9 @@ export default function Home() {
                   },
                 },
               }}
-              onChange={() => {
-                updateTask.mutate({
-                  id: task.id,
-                  status:
-                    task.status === 'completed' ? 'incomplete' : 'completed',
-                });
-              }}
+              onChange={() => changeTaskStatus(task.id, task.status)}
             />
-            <IconButton
-              color="error"
-              onClick={() => deleteTask.mutate(task.id)}
-            >
+            <IconButton color="error" onClick={() => onDeleteTask(task.id)}>
               <Delete />
             </IconButton>
           </TodoItemStyled>
