@@ -29,7 +29,6 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@prisma/client": "^5.20.0",
     "@types/chroma-js": "^2.4.4",
     "@types/lodash": "^4.17.10",
     "@types/node": "^20",
@@ -37,7 +36,6 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
-    "prisma": "^5.20.0",
     "typescript": "^5"
   }
 }
