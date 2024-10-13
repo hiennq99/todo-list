@@ -5,6 +5,7 @@ import { toast } from '@/components/toast';
 import { useDeleteTask } from '@/hooks/useDeleteTask';
 import { useTasksQuery } from '@/hooks/useTasksQuery';
 import { useUpdateTask } from '@/hooks/useUpdateTask';
+import { TaskStatus } from '@/types/taks';
 import { Add, Delete } from '@mui/icons-material';
 import {
   Checkbox,
@@ -53,7 +54,10 @@ export default function Home() {
     try {
       await updateTask.mutateAsync({
         id,
-        status: status === 'completed' ? 'incomplete' : 'completed',
+        status:
+          status === TaskStatus.Completed
+            ? TaskStatus.Incomplete
+            : TaskStatus.Completed,
       });
       toast('Task status changed successfully', 'success');
     } catch (error) {
