@@ -1,5 +1,53 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Setup DynamoDB with AWS CDK
+
+### Install AWS CLI
+
+```bash
+# install aws cli
+following https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+# install cdk cli
+npm install -g aws-cdk
+```
+
+Access to infrastructure directory
+
+```bash
+cd infrastructure
+```
+
+First, install the necessary dependencies:
+
+```bash
+npm install
+```
+
+To build the project, run:
+
+```bash
+npm run build
+```
+
+To deploy the stack to your AWS account, use:
+
+```bash
+cdk deploy
+```
+
+You can also compare the deployed stack with the current state using:
+
+```bash
+cdk diff
+```
+
+To synthesize the CloudFormation template, run:
+
+```bash
+cdk synth
+```
+
 ## Getting Started
 
 First, run the development server:

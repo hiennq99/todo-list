@@ -19,4 +19,4 @@ export const TaskSchema = new dynamoose.Schema(
   }
 );
 
-export const TaskModel = dynamoose.model('Task', TaskSchema);
+export const TaskModel = dynamoose.model('Tasks', TaskSchema);
