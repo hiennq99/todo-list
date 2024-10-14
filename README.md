@@ -6,8 +6,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ```bash
 # install aws cli
-following https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
+# configure aws cli
+aws configure
+```
+
+### Install AWS CDK CLI
+
+```bash
 # install cdk cli
 npm install -g aws-cdk
 ```
@@ -65,17 +72,6 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Running Prisma and Docker Compose
-
-To run Prisma and Docker Compose, use the following commands:
-
-```bash
-docker-compose up -d
-npx prisma migrate dev
-```
 
 ## Learn More
 
